@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { QrCode, Cpu, Menu, X, SlidersVerticalIcon } from "lucide-react"
-import Link from "next/link"
-import { useState } from "react"
+import { Button } from "@/components/ui/button";
+import { QrCode, Cpu, Menu, X, SlidersVerticalIcon } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
 
 export function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
@@ -17,7 +17,6 @@ export function Navbar() {
             <Link href="/" className="flex items-center space-x-2">
               <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                 <QrCode className="w-5 h-5 text-primary-foreground" />
-
               </div>
               <span className="text-xl font-bold text-primary">NEXUS</span>
             </Link>
@@ -46,9 +45,19 @@ export function Navbar() {
               <SlidersVerticalIcon className="w-4 h-4" />
               Assign
             </Link>
-            <Button variant="outline" size="sm" className="bg-background hover:bg-accent">
-              Documentation
-            </Button>
+            <Link
+              href="https://docs.google.com/document/d/1DIxt2ky7pPeWd0pqnW-cxRB1MhpxeonpA72K1vYXMYs"
+              target="_blank"
+              className="cursor-pointer"
+            >
+              <Button
+                variant="outline"
+                size="sm"
+                className="bg-background hover:bg-accent cursor-pointer"
+              >
+                Documentation
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -59,7 +68,11 @@ export function Navbar() {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="p-2 hover:bg-accent"
             >
-              {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {isMenuOpen ? (
+                <X className="w-5 h-5" />
+              ) : (
+                <Menu className="w-5 h-5" />
+              )}
             </Button>
           </div>
         </div>
@@ -92,13 +105,22 @@ export function Navbar() {
                 <SlidersVerticalIcon className="w-4 h-4" />
                 Assign
               </Link>
-              <Button variant="outline" size="sm" className="w-fit bg-background hover:bg-accent">
-                Documentation
-              </Button>
+              <Link
+                href="https://docs.google.com/document/d/1DIxt2ky7pPeWd0pqnW-cxRB1MhpxeonpA72K1vYXMYs"
+                target="_blank"
+              >
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="w-fit bg-background hover:bg-accent"
+                >
+                  Documentation
+                </Button>
+              </Link>
             </div>
           </div>
         )}
       </div>
     </nav>
-  )
+  );
 }
