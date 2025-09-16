@@ -22,6 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <meta name="apple-mobile-web-app-title" content="Nexus" />
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
         <Navbar />
         <Suspense fallback={null}>{children}</Suspense>
