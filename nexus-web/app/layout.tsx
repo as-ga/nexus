@@ -1,20 +1,18 @@
+import type React from "react";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
+import { Analytics } from "@vercel/analytics/next";
+import { Suspense } from "react";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { Navbar } from "@/components/navbar";
 
 export const metadata: Metadata = {
-  title: "Nexus",
-  description: "A collaborative platform to connect people and ideas.",
+  title: "NEXUS - AI-Powered Railway Track Fitting Identification System",
+  description:
+    "NEXUS: Revolutionary laser QR code marking system for Indian Railways track fittings with predictive maintenance and quality control",
+  keywords:
+    "NEXUS, Indian Railways, QR Code, Laser Marking, Track Fittings, Predictive Maintenance, Smart India Hackathon 2025",
 };
 
 export default function RootLayout({
@@ -24,10 +22,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
+        <Navbar />
+        <Suspense fallback={null}>{children}</Suspense>
+        <Analytics />
       </body>
     </html>
   );
